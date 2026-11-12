@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Qumran caves</title>
+    <style>
+      body {
+        font-family: Georgia, serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 12px;
+      }
+
+      #map {
+        position: relative;
+        height: 350px;
+        background: linear-gradient(
+          to right,
+          #cdbb9c 0%,
+          #e4ddcb 45%,
+          #8db0bd 85%
+        );
+        border: 1px solid #999;
+      }
+
+      .cave {
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 2px solid #333;
+        background: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .cave:hover {
+        background: #ffe9a8;
+      }
+
+      #info {
+        margin-top: 15px;
+        padding: 12px;
+        border: 1px solid #999;
+        min-height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Qumran caves</h1>
+
+    <div id="map"></div>
+    <div id="info">Click a cave on the map.</div>
+
+    <script>
+      var caves = [
+        {
+          n: 1,
+          left: 38,
+          top: 40,
+          text: "Great Isaiah Scroll, Community Rule, Habakkuk Pesher, War Scroll, Thanksgiving Hymns, Genesis Apocryphon. Found 1947.",
+        },
+        {
+          n: 2,
+          left: 44,
+          top: 32,
+          text: "Fragments of Exodus, Leviticus, Numbers, Deuteronomy, Ben Sira, Jubilees. 1952.",
+        },
+        {
+          n: 3,
+          left: 34,
+          top: 14,
+          text: "The Copper Scroll, plus Ezekiel, Psalms and Lamentations. 1952.",
+        },
+        {
+          n: 11,
+          left: 46,
+          top: 8,
+          text: "Temple Scroll, Psalms Scroll (with Psalm 151), Targum of Job. 1956.",
+        },
+        {
+          n: 6,
+          left: 48,
+          top: 62,
+          text: "Damascus Document, Book of Giants, Genesis, Psalms, Daniel. 1952.",
+        },
+        {
+          n: 5,
+          left: 55,
+          top: 66,
+          text: "Deuteronomy, Kings, Isaiah, Psalms, Damascus Document. 1952.",
+        },
+        {
+          n: 4,
+          left: 58,
+          top: 76,
+          text: "About 15,000 fragments: almost every book of the Hebrew Bible except Esther, Enoch, Jubilees, Tobit, Damascus Document, 4QMMT. 1952.",
+        },
+        {
+          n: 10,
+          left: 50,
+          top: 74,
+          text: "One ostracon with a few letters. 1955.",
+        },
+        {
+          n: 7,
+          left: 52,
+          top: 84,
+          text: "Greek papyrus fragments only (Exodus, Epistle of Jeremiah). 1955.",
+        },
+        {
+          n: 8,
+          left: 62,
+          top: 88,
+          text: "Genesis, Psalms, a phylactery and a mezuzah. 1955.",
+        },
+        {
+          n: 9,
+          left: 46,
+          top: 90,
+          text: "One tiny unidentified papyrus fragment. 1955.",
+        },
+      ];
+
+      var map = document.getElementById("map");
+      var info = document.getElementById("info");
+
+      caves.forEach(function (cave) {
+        var button = document.createElement("button");
+        button.className = "cave";
+        button.textContent = cave.n;
+        button.style.left = cave.left + "%";
+        button.style.top = cave.top + "%";
+
+        button.onclick = function () {
+          info.innerHTML =
+            "<h2>Cave " + cave.n + "</h2><p>" + cave.text + "</p>";
+        };
+
+        map.appendChild(button);
+      });
+    </script>
+  </body>
+</html>
